@@ -18,12 +18,22 @@ When a user adds a new book, the book must exist. To verify the existence of the
 Services’ description 
 -----------------------------------
 SOAP and REST services make it possible to:
+
+
   -Recover one or more books containing the requested title.
+  
+  
   -Recover a book by its ID
+  
+  
   -Add a book to the database. 
   
 For the REST service, here are the different possible GET requests:
+
+
   -http://localhost:8080/BookResearchRest/rest/book/title/{title}
+  
+  
   -http://localhost:8080/BookResearchRest/rest/book/id/{id} 
 
 These services use a database that contains three tables:
@@ -34,15 +44,28 @@ These services use a database that contains three tables:
 Clients’ description
 -----------------------------------
 The language used for the client is PHP. This is a website that contains two pages:
+
+
   -The index page where we can add a book or search
+  
+  
   -The "book" page (./research/book.php) which will contain the details of the book (s) of our research 
+  
 
 When searching for or adding a book, the user can choose which web service he wants to use (SOAP or GET).
 
 The client functions code (SOAP and REST) is located in the "./include/functions" directory :
+
+
   -functionsSOAP.php : contains the functions of the client with the SOAP web service
+  
+  
   -functionsREST.php : contains the functions of the client with the REST web service
+  
+  
   -functions.inc.php : contains basic functions 
+  
+  
   -mysql.conf.php : function allowing connection to the database 
 
 Example of the use of web services with the client. 
