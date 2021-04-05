@@ -77,10 +77,21 @@ The client functions code (SOAP and REST) is located in the "./include/functions
 Example of the use of web services with the client. 
 -----------------------------------
 Adding a book in the database with the SOAP method 
+
+
+![image](https://user-images.githubusercontent.com/60446421/113578620-622bee00-9623-11eb-8ab3-de9e49d71576.png)
+
+Confirmation that this is the book added 
+
+
 ![image](https://user-images.githubusercontent.com/60446421/113577839-33614800-9622-11eb-94d3-ffa81a16e02e.png)
 
 Search (with SOAP method) for the previously added book in the database 
+
+
 ![image](https://user-images.githubusercontent.com/60446421/113577948-5e4b9c00-9622-11eb-9214-e68f40c0f1d0.png)
 
 Display of the book with its characteristics (cover, title, author, synopsis) 
+
+
 ![image](https://user-images.githubusercontent.com/60446421/113578045-80ddb500-9622-11eb-9080-223511ed7421.png)
