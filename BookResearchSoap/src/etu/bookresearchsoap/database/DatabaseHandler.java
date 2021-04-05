@@ -162,7 +162,6 @@ public class DatabaseHandler {
 	
 	/* Inserting a book into the database */
 	public Book insertBook(Book book) throws SQLException, ClassNotFoundException {
-		int keyAuthor;
 		ArrayList<Book> books = getBookById(book.getId());
 		
 		//If the book already exists in the database, we return null
@@ -186,11 +185,11 @@ public class DatabaseHandler {
 			
 			// If the author of the book to insert does not exist in the database, then we retrieve a new key and add this new author 
 			if(idAuthor==-1) {
-				keyAuthor=getNewKey("author","id_author");
+				idAuthor=getNewKey("author","id_author");
 				
 				insertQueryStatement = "INSERT INTO author (id_author, name_author) VALUES (?,?)";
 				prepareStat = conn.prepareStatement(insertQueryStatement);
-				prepareStat.setInt(1, keyAuthor);
+				prepareStat.setInt(1, idAuthor);
 				prepareStat.setString(2, book.getAuthor());
 	 
 				// Execute insert SQL statement
