@@ -2,7 +2,8 @@
 
 Member names and emails​
 -----------------------------------
-Arthur MIMOUNI : arthur.mimouni@gmail.com.
+Arthur MIMOUNI : arthur.mimouni@gmail.com  
+
 Yannick NANA : ianvanyann@gmail.com
 
 Description project "Online Library"
