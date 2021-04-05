@@ -1,0 +1,39 @@
+.header-menu{
+	height:20em;
+	width:100%;
+}
+
+header {
+	z-index:1000;
+	justify-content:space-between;
+	align-items:center;
+	display:flex;
+	width:100%;
+	background-color:white;
+	height:10em;
+}
+
+nav{
+	padding-top:1em;
+}
+
+.nav-links{
+	list-style:none;
+	padding-left: 0;
+	padding-top:2em;
+}
+
+.nav-links li{
+	display:inline-block;
+	padding:0px 20px;
+}
+
+.input-search{
+	height:3em;
+}
+
+.button-search{
+	height:3em;
+}
+
+
