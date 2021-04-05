@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BookManagementService" targetNamespace="http://service.bookresearchsoap.etu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.bookresearchsoap.etu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://service.bookresearchsoap.etu/" schemaLocation="bookmanagementimpl_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getBookById">
+    <wsdl:part name="parameters" element="tns:getBookById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookByTitle">
+    <wsdl:part name="parameters" element="tns:getBookByTitle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBook">
+    <wsdl:part name="parameters" element="tns:addBook">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookByTitleResponse">
+    <wsdl:part name="parameters" element="tns:getBookByTitleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBookResponse">
+    <wsdl:part name="parameters" element="tns:addBookResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookByIdResponse">
+    <wsdl:part name="parameters" element="tns:getBookByIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BookManagement">
+    <wsdl:operation name="getBookById">
+      <wsdl:input name="getBookById" message="tns:getBookById">
+    </wsdl:input>
+      <wsdl:output name="getBookByIdResponse" message="tns:getBookByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookByTitle">
+      <wsdl:input name="getBookByTitle" message="tns:getBookByTitle">
+    </wsdl:input>
+      <wsdl:output name="getBookByTitleResponse" message="tns:getBookByTitleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBook">
+      <wsdl:input name="addBook" message="tns:addBook">
+    </wsdl:input>
+      <wsdl:output name="addBookResponse" message="tns:addBookResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookManagementServiceSoapBinding" type="tns:BookManagement">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBookById">
+      <soap:operation soapAction="urn:GetBookById" style="document"/>
+      <wsdl:input name="getBookById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookByTitle">
+      <soap:operation soapAction="urn:GetBookByTitle" style="document"/>
+      <wsdl:input name="getBookByTitle">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookByTitleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBook">
+      <soap:operation soapAction="urn:AddBook" style="document"/>
+      <wsdl:input name="addBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookManagementService">
+    <wsdl:port name="BookManagementPort" binding="tns:BookManagementServiceSoapBinding">
+      <soap:address location="http://localhost:8080/BookResearchSoap/services/BookManagementPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

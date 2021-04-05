@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:tns="http://service.bookresearchsoap.etu/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://service.bookresearchsoap.etu/" version="1.0">
+<xs:element name="addBook" type="tns:addBook"/>
+<xs:element name="addBookResponse" type="tns:addBookResponse"/>
+<xs:element name="getBookById" type="tns:getBookById"/>
+<xs:element name="getBookByIdResponse" type="tns:getBookByIdResponse"/>
+<xs:element name="getBookByTitle" type="tns:getBookByTitle"/>
+<xs:element name="getBookByTitleResponse" type="tns:getBookByTitleResponse"/>
+<xs:complexType name="getBookById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getBookByIdResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="book">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="author" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getBookByTitle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getBookByTitleResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="book" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addBookResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
