@@ -1,5 +1,5 @@
 <!--
-Get one or more books according to title or ID (depends on the $ parameters parameter
+Get one or more books according to title or ID (depends on the $parameters)
 -->
 <?php
 	function getBookSOAP($parameter,$name_parameter){
@@ -73,25 +73,29 @@ Get one or more books according to title or ID (depends on the $ parameters para
 				$title=$result->return[$i]->title;
 				$author="By ".$result->return[$i]->author;
 			}
-			/*We retrieve the data of the book using its id and the external REST web service "google Book api" */
+			/*We retrieve the data (cover, published date and synopsis) of the book using its id and the external REST web service "google Book api" */
 			$url="https://www.googleapis.com/books/v1/volumes/".$id_book;
 			$raw = @file_get_contents($url);
 			//Converting the retrieved data to JSON format 
 			$json = json_decode($raw);
 
-			
+			//get the published date of the book
 			if(isset($json->volumeInfo->publishedDate)){
 				$release="Released in ".$json->volumeInfo->publishedDate;
 			}
 			else{
 				$release="";
 			}
+			
+			//get the cover of the book
 			if(isset($json->volumeInfo->imageLinks->thumbnail) AND $nbr_books<2){
 				$cover=$json->volumeInfo->imageLinks->thumbnail;
 			}
 			else{
 				$cover="../img/empty_book.png";
 			}
+			
+			//get the synopsis of the book
 			if(isset($json->volumeInfo->description)){
 				$synopsis=$json->volumeInfo->description;
 			}
@@ -114,7 +118,7 @@ Add a book to the database
 -->
 <?php
 	function addBookSOAP($title_book,$name_author,$id_book){
-		/*Envelope containing the book to be added */
+		/*SOAP envelope containing the book to be added */
 		$post_string='<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="http://service.bookresearchsoap.etu/" 
 						xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 						<soapenv:Body>
@@ -128,24 +132,28 @@ Add a book to the database
 						</soapenv:Body>
 					</soapenv:Envelope>';
 		
+		//SOAP headers containing additional information
 		$headers = array("Content-type: text/xml;charset=\"utf-8\"", 
 						 "Accept: text/xml", 
 						 "Cache-Control: no-cache", 
 						 "Pragma: no-cache", 
 						 "SOAPAction: urn:AddBook", 
 						 "Content-length: ".strlen($post_string)); 
-
+		//Initiate cURL
 		$soap_do = curl_init(); 
-				   curl_setopt($soap_do, CURLOPT_URL,"http://localhost:8080/BookResearchSoap/services/BookManagementPort?wsdl");   
-				   curl_setopt($soap_do, CURLOPT_CONNECTTIMEOUT, 10); 
-				   curl_setopt($soap_do, CURLOPT_TIMEOUT,        10); 
-				   curl_setopt($soap_do, CURLOPT_RETURNTRANSFER, true );
-				   curl_setopt($soap_do, CURLOPT_SSL_VERIFYPEER, false);  
-				   curl_setopt($soap_do, CURLOPT_SSL_VERIFYHOST, false); 
-				   curl_setopt($soap_do, CURLOPT_POST,           true ); 
-				   curl_setopt($soap_do, CURLOPT_POSTFIELDS,$post_string); 
-				   curl_setopt($soap_do, CURLOPT_HTTPHEADER,$headers); 
-
+		curl_setopt($soap_do, CURLOPT_URL,"http://localhost:8080/BookResearchSoap/services/BookManagementPort?wsdl");   
+		curl_setopt($soap_do, CURLOPT_CONNECTTIMEOUT,10); 
+		curl_setopt($soap_do, CURLOPT_TIMEOUT,10); 
+		curl_setopt($soap_do, CURLOPT_RETURNTRANSFER,true );
+		curl_setopt($soap_do, CURLOPT_SSL_VERIFYPEER,false);  
+		curl_setopt($soap_do, CURLOPT_SSL_VERIFYHOST,false); 
+		//Set CURLOPT_POST to true to send a POST request.
+		curl_setopt($soap_do, CURLOPT_POST,true ); 
+		//Attach the soap envelope to the body of our request.
+		curl_setopt($soap_do, CURLOPT_POSTFIELDS,$post_string); 
+		//Attach the soap headers
+		curl_setopt($soap_do, CURLOPT_HTTPHEADER,$headers); 
+		//Execute the POST request 
 		$result = curl_exec($soap_do);
 		$err = curl_error($soap_do); 
 	}
