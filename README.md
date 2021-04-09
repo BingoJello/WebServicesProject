@@ -12,8 +12,8 @@ Description project "Online Library"
 ----------------------------------
 Create a service in SOAP and REST that provides the possibility to add and demand information of a book.
 
-Create a client to add books and then ask information about a book. By retrieving the title of the book, we retrieve a set of informations about it (Date of publication,
-author, summary, book cover) using an external web service (GOOGLE BOOKS API).
+Create a client to add books and then ask information about a book. By retrieving the title of the book, we retrieve a set of informations about it (date of publication,
+author, summary, book cover) using an external web service (Google books API).
 
 When a user adds a new book, the book must exist. To verify the existence of the book we look in the API if the book exists.
 
@@ -22,13 +22,13 @@ Services’ description
 SOAP and REST services make it possible to:
 
 
-    -Recover one or more books containing the requested title.
+    -Recover one or more books containing the requested title (GET method).
   
   
-    -Recover a book by its ID
+    -Recover a book by its ID (GET method)
   
   
-    -Add a book to the database. 
+    -Add a book to the database (POST method). 
   
 For the REST service, here are the different possible GET requests:
 
