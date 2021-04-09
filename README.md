@@ -62,7 +62,7 @@ The language used for the client is PHP. This is a website that contains two pag
 
 When searching for or adding a book, the user can choose which web service he wants to use (SOAP or REST).
 
-The client functions code (SOAP and REST) is located in the "./webClient/include/functions" directory :
+The client functions code (SOAP and REST) is located in the "./WebClient/include/functions" directory :
 
 
     -functionsSOAP.php : contains the functions of the client with the SOAP web service
