@@ -15,7 +15,7 @@ Create a service in SOAP and REST that provides the possibility to add and deman
 Create a client to add books and then ask information about a book. By retrieving the title of the book, we retrieve a set of informations about it (date of publication,
 author, summary, book cover) using an external web service (Google books API).
 
-When a user adds a new book, the book must exist. To verify the existence of the book we look in the API if the book exists.
+When a user adds a new book, the book must exist. To verify the existence of the book we look in the external web service if the book exists.
 
 Services’ description 
 -----------------------------------
