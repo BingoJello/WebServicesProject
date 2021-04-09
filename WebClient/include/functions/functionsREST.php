@@ -19,7 +19,7 @@ Get one or more books according to title or ID (depends on the $parameters param
 		
 		if(isset($xml->book[0]->title) AND (!empty($xml->book[0]->title))){
 			for($i=0;$i<count($xml);$i++){
-				/*We retrieve the data of the book using its id and the external REST web service "google Book api" */
+				/*We retrieve the data (cover, published date and synopsis) of the book using its id and the external REST web service "google Book api" */
 				$url="https://www.googleapis.com/books/v1/volumes/".$xml->book[$i]->id;
 				$raw = @file_get_contents($url);
 				//Converting the retrieved data to JSON format 
@@ -28,18 +28,23 @@ Get one or more books according to title or ID (depends on the $parameters param
 				$id=$xml->book[$i]->id;
 				$author="By ".$xml->book[$i]->author;
 				
+				//get the published date of the book
 				if(isset($json->volumeInfo->publishedDate)){
 					$release="Released in ".$json->volumeInfo->publishedDate;
 				}
 				else{
 					$release="";
 				}
+				
+				//get the cover of the book
 				if(isset($json->volumeInfo->imageLinks->thumbnail) AND count($xml)<2){
 					$cover=$json->volumeInfo->imageLinks->thumbnail;
 				}
 				else{
 					$cover="../img/empty_book.png";
 				}
+				
+				//get the synopsis of the book
 				if(isset($json->volumeInfo->description)){
 					$synopsis=$json->volumeInfo->description;
 				}
