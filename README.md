@@ -83,7 +83,7 @@ Adding a book in the database with the SOAP method
 
 ![image](https://user-images.githubusercontent.com/60446421/113578620-622bee00-9623-11eb-8ab3-de9e49d71576.png)
 
-Search for the book and its details using the "external google books api" web service.
+Search for the book and its details using "google books API" external web service.
 Then adding the book to our database using the POST request.
 
 ![image](https://user-images.githubusercontent.com/60446421/113577839-33614800-9622-11eb-94d3-ffa81a16e02e.png)
