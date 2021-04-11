@@ -51,8 +51,8 @@ public class DatabaseHandler {
 				i++;
 			}
 			rs.close();
-				prepareStat.close();
-				conn.close();	
+			prepareStat.close();
+			conn.close();	
 			
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -84,14 +84,14 @@ public class DatabaseHandler {
 				// Execute insert SQL statement
 				ResultSet rs=prepareStat.executeQuery();
 				while ( rs.next() )
-			    {
+			    	{
 					// The book found is stored in our ArrayList
 					book.setId(rs.getString("id_book"));
 					book.setTitle(rs.getString("title"));
 					book.setAuthor(rs.getString("name_author"));
 					books.add(i,book);
 					i++;
-			    }
+			    	}
 				rs.close();
 				prepareStat.close();
 				conn.close();	
@@ -119,9 +119,9 @@ public class DatabaseHandler {
 				// execute insert SQL statement
 				ResultSet rs=prepareStat.executeQuery();
 				while ( rs.next() )
-			    {
+			    	{
 					key++;
-			    }
+			    	}
 				rs.close();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -145,9 +145,9 @@ public class DatabaseHandler {
 				// Execute insert SQL statement
 				ResultSet rs=prepareStat.executeQuery();
 				while ( rs.next() )
-			    {
+				{
 					return rs.getInt("id_author");
-			    }
+			    	}
 				rs.close();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
