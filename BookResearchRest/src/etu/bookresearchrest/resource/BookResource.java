@@ -32,7 +32,7 @@ public class BookResource {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	//@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_XML)
 	public Book addBook(Book book) {
 		return bookService.addBook(book);
 	}
