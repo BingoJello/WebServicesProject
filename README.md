@@ -28,7 +28,7 @@ SOAP and REST services make it possible to:
     -Recover a book by its ID (GET method : getBookById(String title))
   
   
-    -Add a book to the database (POST method : addBook(Book book). 
+    -Add a book to the database (POST method : addBook(Book book)). 
   
 For the REST service, here are the different possible GET requests:
 
