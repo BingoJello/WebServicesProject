@@ -6,7 +6,6 @@ Group MN1
 
 Arthur MIMOUNI : arthur.mimouni@gmail.com  
 
-Yannick NANA : ianvanyann@gmail.com
 
 Description project "Online Library"
 ----------------------------------
